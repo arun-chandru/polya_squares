@@ -1,0 +1,78 @@
+{
+  "pi_certificate": {
+    "method": "Machin identity with twelve-term rational alternating enclosures",
+    "lower": "333/106",
+    "upper": "355/113",
+    "passed": true
+  },
+  "midpoint_refined": {
+    "bound": "4/25",
+    "y_range": "[1/2,3]",
+    "tail_start": 3,
+    "tested": 245,
+    "accepted": 123,
+    "depth": 12,
+    "covered_squared_width": "35/4",
+    "least_margin": "501827/4445962240"
+  },
+  "L_global": {
+    "z_range": "[1,7)",
+    "lower_bound": "7/25",
+    "tail_start": 7,
+    "tested": 434,
+    "accepted": 220,
+    "depth": 9,
+    "covered_width": "6",
+    "least_margin": "39188871/22229811200"
+  },
+  "L_high": {
+    "z_range": "[4,21)",
+    "lower_bound": "8/25",
+    "tail_start": 21,
+    "tested": 1995,
+    "accepted": 1006,
+    "depth": 10,
+    "covered_width": "17",
+    "least_margin": "3232271/4445962240"
+  },
+  "horizontal_middle": {
+    "x_range": "[2,4]",
+    "a_range": "[0,1/2]",
+    "upper_bound": "4/15",
+    "tested": 5395,
+    "accepted": 2698,
+    "depth": 18,
+    "covered_grid_area": 1610612736,
+    "expected_grid_area": 1610612736,
+    "least_margin": "39331/6668943360"
+  },
+  "center_triangle": {
+    "x_range": "[1,2]",
+    "z_range": "[x,4)",
+    "grid_denominator": 65536,
+    "tested": 9280,
+    "accepted": 4620,
+    "skipped_empty_boxes": 43,
+    "depth": 18,
+    "twice_clipped_grid_area": 21474836480,
+    "coverage_by_band": [
+      {
+        "floor_z": 1,
+        "twice_clipped_grid_area": 4294967296,
+        "expected": 4294967296
+      },
+      {
+        "floor_z": 2,
+        "twice_clipped_grid_area": 8589934592,
+        "expected": 8589934592
+      },
+      {
+        "floor_z": 3,
+        "twice_clipped_grid_area": 8589934592,
+        "expected": 8589934592
+      }
+    ],
+    "least_margin": "440730641/125696244449280"
+  },
+  "all_checks_passed": true
+}

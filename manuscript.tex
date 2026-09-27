@@ -1,0 +1,1614 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,mathtools,booktabs}
+\usepackage{microtype}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={Polya inequalities for square frames and perforated squares},pdfauthor={R. Arun Chandru}}
+\numberwithin{equation}{section}
+\setcounter{tocdepth}{1}
+\allowdisplaybreaks[2]
+\emergencystretch=2em
+\raggedbottom
+\newcommand{\R}{\mathbb R}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\Om}{\Omega}
+\newcommand{\sstar}{s_*}
+\title[P\'olya inequalities for square frames]{P\'olya inequalities for square frames\texorpdfstring{\\}{ }and perforated squares}
+\author{R. Arun Chandru}
+\email{arun.chandru@gmail.com}
+\date{27 September 2026}
+\subjclass[2020]{Primary 35P15; Secondary 35P20, 11P21, 65G20}
+\keywords{P\'olya's conjecture, Dirichlet Laplacian, square frame, perforated domain, eigenvalue counting function, variational comparison, exact computation}
+\begin{document}
+\begin{abstract}
+We prove P\'olya's inequality for the Dirichlet eigenvalues of every
+concentric square frame whose inner and outer sides are parallel.
+The conclusion holds for every hole-to-outer-side ratio strictly between
+zero and one and for every eigenvalue. We also prove a position- and
+orientation-independent result for finitely many square holes: it suffices
+that the sum of their side lengths, divided by the outer side length,
+is at most $\sqrt{1-12/(5\pi)}$. This constant is optimal for the
+universal square-count subtraction criterion, not for the geometric
+inequality. The frame argument goes beyond that criterion by combining
+mixed-boundary rectangle comparisons with a variational transfer from
+the half-side frame. An affine parameter reduction treats arbitrarily
+thin frames uniformly. A further reduction proves the inequality for
+an arbitrarily displaced, strictly interior parallel rectangular hole
+whenever both its side ratios are at least $11/12$. All unbounded
+spectral ranges are covered by
+explicit analytic estimates; the remaining comparisons use exact
+integer and rational certificates, without numerically approximating eigenvalues of a perforated domain.
+\end{abstract}
+\maketitle
+\tableofcontents
+
+\section{Introduction}\label{sec:introduction}
+
+Weyl's law determines the leading density of the Dirichlet spectrum,
+but it does not by itself decide on which side of that leading term
+the counting function lies at a given energy. P\'olya's conjecture asks
+for precisely this one-sided assertion, with no asymptotic threshold.
+In two dimensions it states that
+\begin{equation}\label{eq:polya}
+ \abs\Om\lambda_k^D(\Om)\ge4\pi k\qquad(k\ge1),
+\end{equation}
+where $\Om$ is a bounded open planar set and eigenvalues are repeated
+according to multiplicity. The coefficient is forced by Weyl's law.
+What makes \eqref{eq:polya} difficult is the requirement that the same
+coefficient govern the low spectrum, the intermediate range, and the
+entire high-energy tail.
+
+A hole makes this requirement particularly instructive. Removing a
+region raises Dirichlet eigenvalues, but also decreases the area in
+\eqref{eq:polya}. Domain monotonicity alone compares only the first
+effect. A useful comparison must account for both, and its sharpness
+can depend on the energy. The geometry of a square frame permits
+several elementary comparisons, none of which is sufficient on its
+own. Retaining their distinct information, and transferring one
+finite spectral gap between nearby frames, yields an all-parameter
+result.
+
+\subsection*{The geometric conclusions}
+
+For $0<q<1$, let
+\begin{equation}\label{eq:frame}
+ \Om_q=(-1/2,1/2)^2\setminus[-q/2,q/2]^2.
+\end{equation}
+Our first conclusion is
+\begin{equation}\label{eq:main-frame}
+ \boxed{(1-q^2)\lambda_k^D(\Om_q)\ge4\pi k
+       \quad(0<q<1,\ k\ge1).}
+\end{equation}
+The two squares are concentric and have parallel sides. The assertion
+includes arbitrarily thin frames; there is no lower bound on $1-q$.
+Similarities of the entire domain preserve \eqref{eq:main-frame}.
+
+Our second conclusion permits independent positions and orientations
+and an arbitrary finite number of holes. Let $Q$ be an open square of
+side $L>0$, and let $H_1,\ldots,H_m$ be closed squares with pairwise
+disjoint closures strictly inside $Q$. Denote their side lengths by
+$l_i$, and put
+\begin{equation}\label{eq:sharp-constant}
+ \sstar=\sqrt{1-\frac{12}{5\pi}}
+       =0.485856226839692\ldots.
+\end{equation}
+Then
+\begin{equation}\label{eq:main-holes}
+ \sum_{i=1}^m l_i\le\sstar L
+ \quad\Longrightarrow\quad
+ \abs{Q\setminus\bigcup_iH_i}\,
+ \lambda_k^D\left(Q\setminus\bigcup_iH_i\right)\ge4\pi k
+ \quad(k\ge1).
+\end{equation}
+No common orientation, equal size, or prescribed placement of the
+holes is required. Finiteness and strict separation ensure the
+usual polygonal Dirichlet form setting.
+
+There is also a position-independent conclusion at the opposite
+end of the scale. Let a single closed rectangle $H$, with sides
+of lengths $pL$ and $qL$, lie strictly inside $Q$, with its sides
+parallel to those of $Q$ and with an arbitrary center. Then
+\begin{equation}\label{eq:main-displaced}
+ \frac{11}{12}\le p,q<1
+ \quad\Longrightarrow\quad
+ \abs{Q\setminus H}\lambda_k^D(Q\setminus H)\ge4\pi k
+ \qquad(k\ge1).
+\end{equation}
+Both displacement coordinates are unrestricted, subject to strict
+containment. The two side ratios are independent, and even the
+ratio of the horizontal and vertical gap totals may be arbitrarily
+large or small. The gaps themselves may approach zero while
+remaining positive. The endpoint $11/12$ is a sufficient
+constant, not an asserted optimum. Together with
+\eqref{eq:main-holes}, this treats every placement of a parallel
+single square hole for $q\le\sstar$ or $q\ge11/12$; the intervening
+arbitrary-position range is not claimed here.
+
+There is an exact meaning to the constant in \eqref{eq:main-holes}.
+Write
+\begin{equation}\label{eq:count-intro}
+ C(t)=\#\{(a,b)\in\N^2:a^2+b^2\le t^2\},
+ \qquad d(t)=\frac\pi4t^2-C(t),
+\end{equation}
+where $\N=\{1,2,\ldots\}$. We prove
+\begin{equation}\label{eq:scalar-main}
+ \sum_i d(q_it)\le d(t)
+ \quad\text{whenever }q_i\ge0,\quad
+ \sum_iq_i\le\sstar,\quad t\ge0.
+\end{equation}
+The number $\sstar$ is the largest threshold on $\sum_iq_i$ for
+which this scalar assertion holds uniformly. This is \emph{method
+sharpness}, not geometric optimality. Indeed,
+\eqref{eq:main-frame} establishes the geometric inequality for
+centered single holes far beyond this threshold.
+
+\subsection*{Relation to existing work}
+
+P\'olya proved the conjecture for tiling planar domains
+\cite{Polya1961}. The theory of eigenvalue sums developed by Berezin
+and by Li and Yau gives universal averaged inequalities
+\cite{Berezin1972,LiYau1983}; those bounds do not directly give
+\eqref{eq:polya} at individual eigenvalue indices. Product
+constructions, packing arguments, and subdivisions furnish other
+classes and reductions \cite{Laptev1997,FLP2019,FS2023,HW2025}.
+Filonov, Levitin, Polterovich and Sher proved the conjecture for
+Euclidean balls \cite{FLPS2023} and, more recently, for all circular
+planar annuli \cite{FLPS2026}. The latter paper combines
+variational comparisons, lattice estimates and rigorous finite
+computation. Its annuli are bounded by concentric circles; a
+conformal equivalence does not transfer the ordinary Dirichlet
+spectra or the sharp area-normalized assertion to square frames.
+
+Of particular relevance, Jiang and Lin prove P\'olya inequalities
+for perforated strip-tiling domains by subtracting complementary
+counting functions \cite{JL2026}. Their Theorem~1.15, specialized to two dimensions,
+gives the following condition for square holes in a square:
+$\sum_i l_i/L\le1/(2\sqrt2\pi)$, and their discussion explicitly
+includes combining low- and high-energy estimates. We use that
+established comparison principle, not a new version of domain
+monotonicity. The contribution in \eqref{eq:main-holes} is the exact
+total-side threshold for the universal square-deficit comparison.
+The contribution in \eqref{eq:main-frame} is the complete square-frame
+family, obtained by retaining additional geometric information when
+that scalar comparison ceases to suffice. For
+\eqref{eq:main-displaced}, a one-dimensional interval comparison
+eliminates one displacement parameter. A low-energy concavity
+argument then separates the remaining displacement from the two
+independent gap scales. Rectangular complementary counts also
+occur in \cite[Remark~3.5]{JL2026}; the assertion here is the
+explicit large-hole range, uniform in both side ratios and both
+positions. The geometric conclusions concern
+the ordinary Euclidean metric, not an annular product metric.
+
+The estimates below are for unsmoothed counts at every energy.
+Weyl asymptotics and refined remainder or Riesz-mean estimates are
+important context \cite{Weyl1912,JL2026,FrankLarson2025}. Such
+estimates do not by themselves settle the sharp unsmoothed
+inequality over the remaining finite spectral range.
+We therefore give an explicit elementary disk-discrepancy estimate
+and specify every remaining finite comparison. The classical
+Bessel identities needed for that estimate are recorded with
+their normalization in Appendix~\ref{app:circle}.
+
+\subsection*{How the comparisons fit together}
+
+For small holes, \eqref{eq:scalar-main} suffices. Its proof keeps
+track of how a fixed total side length is distributed among the
+holes: replacing every deficit by an independent worst slope loses
+information at one low-energy band. A partition-sensitive bound
+closes that band and attains \eqref{eq:sharp-constant} exactly.
+
+For large centered holes, a four-rectangle partition with relaxed
+boundary conditions is more effective. After a change of scale,
+the sufficient scalar inequality is affine in $q$. One exact
+finite certificate and a concavity estimate for square-root sums
+therefore control a continuous family of thin frames.
+
+The intervening ratios require a different step. At
+$q=49/100$ and $E=20\pi^2$, both the square-subtraction count and
+the relaxed-rectangle count exceed the desired area bound.
+This is a genuine failure of those comparisons, not a failure of
+P\'olya's inequality. A piecewise-affine map transfers the lower
+bound $\lambda_{11}(\Om_{1/2})\ge25\pi^2$ to the neighboring
+frames. That operator comparison resolves the remaining band.
+
+The computation is a finite part of the proof, not a numerical
+approximation of the frame spectrum. Integer lattice enumeration,
+rational interval bounds, and integer square roots are sufficient.
+Appendices~\ref{app:certificate} and~\ref{app:displaced-certificate}
+give the exact tests and their coverage; the accompanying
+standard-library Python verifiers reproduce them. Analytic estimates
+cover all larger energies.
+The scope remains \eqref{eq:main-frame} and
+\eqref{eq:main-holes}, together with \eqref{eq:main-displaced}.
+No assertion is made for all intermediate displaced-hole ratios,
+large independently rotated holes, or the Neumann Laplacian.
+
+\section{Forms, counts and the two geometric comparisons}\label{sec:comparison}
+
+Every domain considered here is bounded and polygonal, with finitely
+many separated boundary components. The Dirichlet Laplacian is the
+selfadjoint operator associated with
+\[
+ \mathfrak a_\Om[u]=\int_\Om\abs{\nabla u}^2\dd x,
+ \qquad u\in H^1_0(\Om),
+\]
+in $L^2(\Om)$. Its resolvent is compact. We use the variational
+characterization
+\begin{equation}\label{eq:minmax}
+ \lambda_k^D(\Om)=
+ \inf_{\substack{V\subset H^1_0(\Om)\\\dim V=k}}
+ \sup_{0\ne u\in V}
+ \frac{\int_\Om\abs{\nabla u}^2}{\int_\Om\abs u^2}.
+\end{equation}
+Throughout, the counting function is inclusive:
+\begin{equation}\label{eq:inclusive}
+ N_\Om(E)=\#\{k:\lambda_k^D(\Om)\le E\}.
+\end{equation}
+In particular, multiplicities are not suppressed at a spectral jump.
+An estimate $N_\Om(E)\le\abs\Om E/(4\pi)$ for every $E\ge0$
+implies \eqref{eq:polya} by setting $E=\lambda_k^D(\Om)$.
+
+Scale the outer square to side one and put
+\begin{equation}\label{eq:energy-normalization}
+ t=\frac{\sqrt E}{\pi},\qquad e=t^2.
+\end{equation}
+The eigenvalues of an isolated square of side $q$ are
+$\pi^2(a^2+b^2)/q^2$, independently of its position and orientation.
+If $P$ denotes the square with its holes removed, zero extension
+embeds the direct sum of the Dirichlet form domains on $P$ and
+the hole interiors into the form domain of the outer square.
+It preserves norms and energies. Formula~\eqref{eq:minmax} gives
+\begin{equation}\label{eq:subtraction}
+ N_P(E)+\sum_i C(q_it)\le C(t),
+ \qquad q_i=l_i/L.
+\end{equation}
+Equivalently, the extra Dirichlet interfaces can only raise the
+direct-sum eigenvalues. If \eqref{eq:scalar-main} holds, then
+\begin{align}
+ N_P(E)&\le C(t)-\sum_i C(q_it)\notag\\
+ &\le\frac\pi4\left(1-\sum_iq_i^2\right)t^2
+ =\frac{\abs P}{4\pi}E.\label{eq:subtraction-weyl}
+\end{align}
+
+For the centered frame there is a complementary form inclusion.
+Set $\delta=1-q$. Cutting horizontally from the hole corners to
+the outer sides gives two horizontal rectangles of dimensions
+$1\times\delta/2$ and two middle side rectangles of dimensions
+$\delta/2\times q$. Allow independent traces across the cuts.
+Also relax the whole inward horizontal edge of each horizontal
+rectangle to a Neumann edge, including the portion that was
+originally on the hole. This latter relaxation is intentional.
+
+On a horizontal rectangle the two vertical sides and the outer
+horizontal side retain Dirichlet conditions; the remaining side
+is Neumann. On a middle side rectangle, the two vertical sides
+are Dirichlet and both horizontal cuts are Neumann. Restrictions
+of $H^1_0(\Om_q)$ belong to the resulting direct-sum form domain,
+and the sum of their norms and energies is unchanged. Enlargement
+of the form domain lowers eigenvalues and therefore gives
+\begin{equation}\label{eq:mixed-count}
+\begin{split}
+ N_{\Om_q}(E)\le M_q(t):={}&
+ 2\#\left\{a\ge1,b\ge0:
+ a^2+\frac{(2b+1)^2}{\delta^2}\le t^2\right\}\\
+ &+2\#\left\{a\ge1,b\ge0:
+ \frac{4a^2}{\delta^2}+\frac{b^2}{q^2}\le t^2\right\}.
+\end{split}
+\end{equation}
+The $b=0$ modes in the second line are essential. The factor two
+in each line accounts for the congruent pair of rectangles, not
+for a multiplicity convention in $C$.
+
+Thus both
+\begin{equation}\label{eq:two-counts}
+ S_q(t):=C(t)-C(qt),\qquad M_q(t)
+\end{equation}
+are upper bounds for the actual frame count. We will use them in
+different regions of parameter and energy space, together with
+one further variational comparison.
+
+\section{The exact total-side threshold for square holes}\label{sec:holes}
+
+The argument for arbitrarily placed holes is entirely in terms
+of the deficit $d$ in \eqref{eq:count-intro}. We first construct
+an envelope that can aggregate any number of holes, and then
+retain additional partition information where that envelope is
+too coarse.
+
+\subsection*{A deficit envelope with a monotone slope}
+
+The exact reflection identity
+\begin{equation}\label{eq:reflection}
+ G(u)=1+4\lfloor u\rfloor+4C(u),\qquad
+ G(u)=\#\{z\in\Z^2:\abs z\le u\},
+\end{equation}
+and the estimate proved in Appendix~\ref{app:circle} give
+\begin{equation}\label{eq:deficit-tail}
+ u-\frac34-\frac{11}{4}u^{2/3}\le d(u)
+ \le u+\frac14+\frac{11}{4}u^{2/3}\qquad(u\ge2).
+\end{equation}
+In particular, for $u\ge1000$,
+\begin{equation}\label{eq:thousand}
+ \frac{2897}{4000}\le\frac{d(u)}u
+ \le\frac{5101}{4000}<\frac43.
+\end{equation}
+The finite integer checks in Appendix~\ref{app:certificate}
+complete the two bounds
+\begin{equation}\label{eq:deficit-upper}
+ d(u)\le\frac43u\quad(u\ge0),\qquad
+ d(u)\le\frac{1309}{1000}u\quad(0\le u\le\sqrt{18}).
+\end{equation}
+These upper bounds include left limits at every lattice jump.
+
+Define $F(0)=0$ and
+\begin{equation}\label{eq:envelope}
+ F(u)=
+ \begin{cases}
+ \pi u^2/4,&0<u<\sqrt2,\\
+ \max\{\pi\sqrt2\,u/4,\ \pi u^2/4-1\},
+        &\sqrt2\le u<\sqrt5,\\
+ (1309/1000)u,&\sqrt5\le u<\sqrt{18},\\
+ (4/3)u,&u\ge\sqrt{18}.
+ \end{cases}
+\end{equation}
+The inequality $d(u)\le F(u)$ follows from the vanishing of $C$
+below $\sqrt2$, the bound $C\ge1$ on the next range, and
+\eqref{eq:deficit-upper}. Moreover, $F(u)/u$ is nonnegative
+and nondecreasing. In the second range it is the maximum of a
+constant and the increasing function $\pi u/4-1/u$.
+At $\sqrt2$ there is no downward jump. At $\sqrt5$, the
+left-limit prefix check in \eqref{eq:deficit-upper} gives
+$(5\pi/4-1)/\sqrt5\le1309/1000$, and
+$\pi\sqrt2/4<1309/1000$. At $\sqrt{18}$ the slope increases.
+It follows also that $F$ is nondecreasing.
+
+If $U=\sum_i u_i>0$, this monotone slope gives
+\begin{equation}\label{eq:aggregate-envelope}
+ \sum_i d(u_i)\le\sum_iF(u_i)
+ \le\sum_i u_i\frac{F(U)}U=F(U).
+\end{equation}
+Zero summands and $U=0$ cause no difficulty. Consequently
+$\sum_i d(q_it)\le F(\sstar t)$ under the hypothesis in
+\eqref{eq:scalar-main}.
+
+\subsection*{All but one energy band}
+
+Put $R=243/500$. Rational enclosures of $\pi$ imply
+\begin{equation}\label{eq:sstar-bracket}
+ \frac{97}{200}<\sstar<R,
+ \qquad \frac\pi4(1-\sstar^2)=\frac35.
+\end{equation}
+The squared transition energies
+$2/\sstar^2,5/\sstar^2,18/\sstar^2$ belong respectively to
+$(8,9),(21,22),(76,77)$. Write $C_n=C(\sqrt n)$.
+For the first quadratic branch of \eqref{eq:envelope}, the
+required inequality is $3t^2/5\ge C(t)$; for the second
+quadratic branch it is $3t^2/5\ge C(t)-1$. The exact tests
+\begin{equation}\label{eq:low-tests}
+ 3n\ge5C_n\quad(0\le n\le8),\qquad
+ 3n\ge5(C_n-1)\quad(8\le n\le21)
+\end{equation}
+establish them. The linear branch in the maximum is covered by
+\begin{equation}\label{eq:low-linear-test}
+ L_n:=333n-424C_n\ge0,
+ \qquad(500L_n)^2\ge2n(243\cdot333)^2
+ \quad(8\le n\le21).
+\end{equation}
+Indeed, division by $\pi/4$ reduces its inequality at $t=\sqrt n$
+to $n-4C_n/\pi\ge\sstar\sqrt{2n}$. The left side is at
+least $L_n/333$, and \eqref{eq:low-linear-test} proves the
+stronger bound with $R$ in place of $\sstar$. All quantities
+are checked nonnegative before squaring.
+
+These are interval checks. On $n\le t^2<n+1$, the count is
+$C_n$; the quadratic differences increase, and the linear
+difference has derivative $\pi t/2-\pi\sqrt2\sstar/4>0$
+for $t\ge\sqrt8$. The overlap at $n=8$ covers the first
+noninteger transition.
+
+For the two larger branches, the exact checks give
+\begin{align}
+ \frac{d(t)}t&\ge\frac{318087}{500000}
+       =\frac{1309}{1000}R,
+ &&\sqrt{21}\le t<\sqrt{77},\quad t^2\notin[53,54),
+ \label{eq:middle-smallhole}\\
+ \frac{d(t)}t&\ge\frac{81}{125}=\frac43R,
+ &&t\ge\sqrt{76}.\label{eq:large-smallhole}
+\end{align}
+The finite tests proving these statements are listed in
+Appendix~\ref{app:certificate}. Between successive integer
+squared radii, $d(t)/t=\pi t/4-C_n/t$ increases. The infinite
+part of \eqref{eq:large-smallhole} follows from
+\eqref{eq:thousand}, since $2897/4000>81/125$.
+The stated ranges overlap the transitions of $F$, so they
+prove $d(t)\ge F(\sstar t)$ except possibly when
+$53\le t^2<54$.
+
+\subsection*{Retaining the partition at the exceptional band}
+
+For every finite list $u_i\ge0$ satisfying
+$\sum_i u_i\le B:=18/5$, we have
+\begin{equation}\label{eq:partition}
+ \sum_i d(u_i)\le\frac92.
+\end{equation}
+Here is the full argument. If every $u_i<\sqrt2$, then
+\[
+ \sum_i d(u_i)=\frac\pi4\sum_i u_i^2
+ \le\frac{\pi\sqrt2}{4}B
+ <\frac{1917}{452}<\frac92,
+\]
+using $\pi<355/113$ and $\sqrt2<3/2$. Otherwise retain one
+actual member $v\ge\sqrt2$. Dropping the other counts and
+summing their quadratic costs gives
+\begin{equation}\label{eq:partition-function}
+ \sum_i d(u_i)\le
+ \frac\pi4\{v^2+(B-v)^2\}-C(v),\qquad\sqrt2\le v\le B.
+\end{equation}
+This does not suppose that only one member exceeds $\sqrt2$.
+On the constant-count intervals ending at
+$\sqrt5,\sqrt8,\sqrt{10},B$, the expression is convex.
+The counts are respectively $1,3,4,6$, since $B^2<13$.
+At an interior jump the value drops. It is therefore enough
+to check the initial endpoint, the three subsequent left
+limits, and $B$.
+
+Using the positive lower radical bounds
+$\sqrt2>7/5$, $\sqrt5>223/100$, $\sqrt8>14/5$,
+$\sqrt{10}>79/25$, and $\pi<355/113$, the corresponding
+upper bounds for \eqref{eq:partition-function} are
+\begin{equation}\label{eq:partition-endpoints}
+ \frac{2488}{565},\quad\frac{49973}{11300},\quad
+ \frac{442}{113},\quad\frac{11349}{2825},\quad
+ \frac{2361}{565}.
+\end{equation}
+All are below $9/2$. The radical bounds are verified by
+squaring, and each endpoint comparison is rational. This
+proves \eqref{eq:partition}.
+
+For $53\le t^2<54$ the total scaled side satisfies
+$\sum_i q_it\le\sstar t<R\sqrt{54}<18/5$.
+Meanwhile $C(t)=37$, and
+\begin{equation}\label{eq:53-close}
+ d(t)\ge\frac{53\pi}{4}-37
+ >\frac{53}{4}\frac{333}{106}-37
+ =\frac{37}{8}>\frac92.
+\end{equation}
+Thus \eqref{eq:partition} closes the entire exceptional band.
+Together with \eqref{eq:aggregate-envelope} and the preceding
+comparisons, it proves \eqref{eq:scalar-main} for every real
+$t\ge0$. Formula~\eqref{eq:subtraction-weyl} now proves
+\eqref{eq:main-holes}.
+
+\subsection*{The exact limitation of this scalar criterion}
+
+If $S>\sstar$, choose
+$\sstar<q<\min\{S,\sqrt{2/5}\}$. This is possible because
+$\sstar<\sqrt{2/5}$. At $t=\sqrt5$, the inclusive count is
+$C(t)=3$, while $C(qt)=0$. The inequality
+$d(t)\ge d(qt)$ would require
+$(5\pi/4)(1-q^2)\ge3$, or $q\le\sstar$, a contradiction.
+Thus no larger threshold on the total side can guarantee
+\eqref{eq:scalar-main}. The comparison itself, rather than the
+geometry of the perforated domain, is what is sharp here.
+
+\section{A uniform comparison for thin centered frames}\label{sec:thin}
+
+We now use the geometry of \eqref{eq:frame}. The mixed rectangle
+count \eqref{eq:mixed-count} becomes particularly effective after
+measuring energy on the width scale. Set
+\[
+ x=(1-q)t,\qquad g_x(y)=\sqrt{(x^2-y^2)_+},
+\]
+and write
+\begin{equation}\label{eq:AB}
+ A(x)=\sum_{\substack{m\ge1\\m\text{ odd}}}g_x(m),
+ \quad B(x)=\sum_{\substack{m\ge1\\m\text{ even}}}g_x(m),
+ \quad R(x)=A(x)+B(x),\quad n(x)=\lfloor x/2\rfloor.
+\end{equation}
+Only finitely many summands are nonzero. Terms at $m=x$ are
+zero; the separate quantity $n(x)$ retains the associated
+Neumann zero modes.
+
+For each positive odd $m$, the horizontal rectangle contributes
+$\lfloor(1-q)^{-1}g_x(m)\rfloor$. For each positive even $m\le x$,
+the vertical rectangle contributes
+$1+\lfloor q(1-q)^{-1}g_x(m)\rfloor$. Therefore
+\begin{equation}\label{eq:mixed-scalar}
+ (1-q)M_q(t)\le2A(x)+2qB(x)+2(1-q)n(x).
+\end{equation}
+The same factor applied to the desired Weyl bound gives
+$\pi(1+q)x^2/4$. Define the difference
+\begin{equation}\label{eq:Dq}
+ D_q(x)=2A(x)+2qB(x)+2(1-q)n(x)
+                  -\frac\pi4(1+q)x^2.
+\end{equation}
+It suffices to prove $D_q(x)\le0$. For fixed $x$ this expression
+is affine in $q$. At its scalar endpoint $q=1$,
+\begin{equation}\label{eq:D1}
+ D_1(x)=2R(x)-\frac\pi2x^2\le0,
+\end{equation}
+because a right-endpoint sum of the decreasing function $g_x$
+is bounded by its integral on $[0,x]$. This is a scalar
+endpoint argument, not an assertion about a domain at $q=1$.
+
+We prove the other endpoint at $q_0=11/20$. It will follow by
+affine interpolation that every $q_0\le q<1$ satisfies the
+required comparison.
+
+\subsection*{Concavity controls the infinite tail}
+
+For $x\ge1$, let $j=\lfloor x\rfloor$ and $r=x-j$. Concavity
+of $g_x$ gives the composite trapezoid bound
+\[
+ R(x)\le\int_0^j g_x(y)\dd y-\frac x2+\frac{g_x(j)}2.
+\]
+The chord on $[j,x]$ lies below $g_x$, hence
+$\int_j^x g_x\ge r g_x(j)/2$. Since
+$g_x(j)=\sqrt{r(2x-r)}\le\sqrt{2x}\sqrt r$,
+\[
+ R(x)\le\frac\pi4x^2-\frac x2
+       +\frac{\sqrt{2x}}2(1-r)\sqrt r.
+\]
+The last factor is maximized at $r=1/3$, with value
+$2/(3\sqrt3)$. We obtain
+\begin{equation}\label{eq:R-upper}
+ R(x)\le\frac\pi4x^2-\frac x2
+              +\sqrt{\frac2{27}}\sqrt x.
+\end{equation}
+At integral $x$ the preceding endpoint term is zero, so this
+derivation also includes the endpoints.
+
+For a lower bound on $B$, put $J=\lfloor(x-1)/2\rfloor$.
+The midpoint inequality for each interval $[2a-1,2a+1]$ gives
+\[
+ 2B(x)\ge\int_1^{2J+1}g_x(y)\dd y.
+\]
+The omitted initial interval contributes at most $x$.
+The final interval has length less than two; using
+$g_x(y)\le\sqrt{2x}\sqrt{x-y}$ there, its contribution is
+at most $8\sqrt x/3$. Thus
+\begin{equation}\label{eq:B-lower}
+ B(x)\ge\frac\pi8x^2-\frac x2-\frac43\sqrt x.
+\end{equation}
+When $J=0$ the middle integral is empty, and the same estimate
+remains valid.
+
+Use $A=R-B$ and $n(x)\le x/2$ in \eqref{eq:Dq}.
+The quadratic terms in \eqref{eq:R-upper} and
+\eqref{eq:B-lower} cancel exactly. The result is
+\begin{equation}\label{eq:D-tail}
+ D_q(x)\le(1-2q)x+
+ \left(2\sqrt{\frac2{27}}+\frac83(1-q)\right)\sqrt x.
+\end{equation}
+At $q_0=11/20$, the elementary bound
+$2\sqrt{2/27}<3/5$ yields
+\begin{equation}\label{eq:thin-tail}
+ D_{q_0}(x)<-\frac{x}{10}+\frac95\sqrt x\le0
+ \qquad(x\ge324).
+\end{equation}
+The case $0\le x<1$ is immediate, since $A=B=n=0$.
+
+\subsection*{The finite scalar comparison and the continuous family}
+
+The finite check in Appendix~\ref{app:certificate} proves
+$D_{q_0}(x)\le0$ for every $1\le x<400$. Its boxes are
+intervals in $x^2$, not sampled values of $x$. The bound on
+each square root is rational, the lower bound on $\pi$ is
+rational, and all comparisons reduce to integers. The finite
+interval overlaps \eqref{eq:thin-tail}, including its terminal
+endpoint. It follows that $D_{q_0}(x)\le0$ for every $x\ge0$.
+
+For $q\in[q_0,1]$, affine interpolation between this inequality
+and \eqref{eq:D1} proves $D_q(x)\le0$ for every $x$. Equations
+\eqref{eq:mixed-count} and \eqref{eq:mixed-scalar} consequently give
+\begin{equation}\label{eq:thin-conclusion}
+ N_{\Om_q}(E)\le\frac{1-q^2}{4\pi}E
+ \qquad(q_0\le q<1,\ E\ge0).
+\end{equation}
+The interpolation is the reason that a single scalar
+certificate establishes a continuum of arbitrarily thin
+geometries.
+
+\section{The intervening ratios and a transferred spectral gap}\label{sec:middle}
+
+The small-hole result already treats $q\le\sstar$, and the
+preceding section treats $q\ge11/20$. We close the interval
+\begin{equation}\label{eq:q-middle}
+ \frac{97}{200}\le q\le\frac{11}{20}.
+\end{equation}
+It overlaps both ranges. Two different ingredients are needed:
+the direct counts cover all but one of a finite list of
+energy bands, and an actual eigenvalue comparison handles the
+remaining band.
+
+\subsection*{A complete finite exception list}
+
+By \eqref{eq:deficit-upper},
+$d(qt)\le(4/3)qt\le(11/15)t$. Thus square subtraction is
+sufficient wherever $d(t)/t\ge11/15$.
+For $t\ge2000$, \eqref{eq:deficit-tail} and $2000>12^3$ give
+\begin{equation}\label{eq:middle-tail}
+ \frac{d(t)}t\ge1-\frac3{8000}-\frac{11}{48}
+ =\frac{18491}{24000}>\frac{11}{15}.
+\end{equation}
+For the finite part, at $t=\sqrt n$ the sufficient integer test is
+\begin{equation}\label{eq:middle-test}
+ L_n\ge0,
+ \qquad(15L_n)^2\ge(11\cdot424)^2n,
+ \qquad L_n=333n-424C_n.
+\end{equation}
+For $1\le n\le4{,}000{,}000$, its failures are exactly
+\begin{equation}\label{eq:exception-list}
+ \mathcal E=\{2,5,6,10,13,20,26,29,41,53,74,85,90,130\}.
+\end{equation}
+Since $d(t)/t$ increases on each interval
+$n\le t^2<n+1$, the only real energies still requiring a
+comparison belong to the fourteen half-open bands indexed by
+$\mathcal E$. The interval $0\le t^2<1$ has zero outer-square
+count. Formula~\eqref{eq:middle-tail} closes the infinite tail
+at the explicit endpoint of the finite check.
+
+\subsection*{The band where the two direct counts are insufficient}
+
+At $q=49/100$ and $t^2=20$,
+\begin{equation}\label{eq:true-count-failure}
+ S_q(t)=M_q(t)=12>
+ \frac\pi4(1-q^2)t^2=\frac{7599\pi}{2000}.
+\end{equation}
+Indeed $C(\sqrt{20})=13$ and $C(q\sqrt{20})=1$.
+Each horizontal rectangle has four modes, with $b=0$ and
+$1\le a\le4$; each vertical rectangle has two modes,
+with $a=1$ and $b=0,1$. The strict numerical inequality
+already follows from $\pi<22/7$.
+Consequently a proof using only $\min(S_q,M_q)$ would leave
+a genuine gap. We instead compare the frame operator with
+that of the half-side frame.
+
+For $q=1/2$, the difference $C(t)-C(t/2)$ is the number of
+positive lattice pairs in the disk that are not both even.
+Below squared radius 25 there are thirteen positive pairs,
+of which three are both even. Therefore
+\begin{equation}\label{eq:half-gap}
+ N_{\Om_{1/2}}(E)\le10\quad(E<25\pi^2),
+ \qquad\lambda_{11}(\Om_{1/2})\ge25\pi^2.
+\end{equation}
+
+Suppose first that $q\le1/2$. Let $\psi_q$ be the increasing
+piecewise-linear self-homeomorphism of $[-1/2,1/2]$ which
+fixes the endpoints and maps $[-q/2,q/2]$ linearly onto
+$[-1/4,1/4]$. Its slopes are
+\begin{equation}\label{eq:map-slopes}
+ a=\frac1{2(1-q)}\quad\text{on the outer intervals},
+ \qquad c=\frac1{2q}\quad\text{on the inner interval},
+ \qquad a\le c.
+\end{equation}
+The map $F(x,y)=(\psi_q(x),\psi_q(y))$ is bi-Lipschitz from
+$\Om_q$ onto $\Om_{1/2}$. Almost everywhere on the frame,
+its derivative is one of
+$\operatorname{diag}(a,a)$,
+$\operatorname{diag}(a,c)$,
+$\operatorname{diag}(c,a)$.
+The region with derivative $\operatorname{diag}(c,c)$ is
+exactly the removed inner square.
+
+For $v\in H^1_0(\Om_q)$ put $u=v\circ F^{-1}$.
+Change of variables gives
+\begin{equation}\label{eq:map-energies}
+ \norm u_{L^2(\Om_{1/2})}^2\ge a^2\norm v_{L^2(\Om_q)}^2,
+ \qquad
+ \int_{\Om_{1/2}}\abs{\nabla u}^2
+ \le\frac ca\int_{\Om_q}\abs{\nabla v}^2.
+\end{equation}
+For the energy, the transformed coefficient is the identity
+on the $(a,a)$ regions and has eigenvalues $c/a$ and $a/c$
+on the others. Composition is a bijection between the two
+Dirichlet form domains and preserves finite-dimensional
+subspace dimensions. Applying \eqref{eq:minmax} in
+\eqref{eq:map-energies} therefore yields
+\begin{equation}\label{eq:transfer}
+ \lambda_k(\Om_q)\ge\frac{a^3}{c}\lambda_k(\Om_{1/2})
+ =\frac{q}{4(1-q)^3}\lambda_k(\Om_{1/2}).
+\end{equation}
+In particular this is a comparison of the actual operators,
+not of the auxiliary counting bounds.
+
+The factor in \eqref{eq:transfer} increases with $q$. At the
+left endpoint of \eqref{eq:q-middle},
+\[
+ 25\frac{q}{4(1-q)^3}=\frac{24250000}{1092727}>22.
+\]
+For $q\ge1/2$, ordinary domain inclusion gives
+$\lambda_{11}(\Om_q)\ge\lambda_{11}(\Om_{1/2})$.
+Thus throughout \eqref{eq:q-middle},
+\begin{equation}\label{eq:actual-gap}
+ N_{\Om_q}(E)\le10\qquad(E\le22\pi^2).
+\end{equation}
+On $20\le t^2<21$ the Weyl expression is at least
+\[
+ \frac\pi4\left(1-\left(\frac{11}{20}\right)^2\right)20
+ =\frac{279\pi}{80}>10.
+\]
+This closes the whole exceptional band at 20, including its
+lower endpoint.
+
+\subsection*{The other thirteen bands}
+
+It remains to use \eqref{eq:two-counts} on the other bands
+in \eqref{eq:exception-list}. We give a finite rectangular
+cover in $(q,e)$, with $e=t^2$. On a rectangle
+\[
+ q\in[q_-,q_+],\qquad e\in[e_-,e_+)\subset[n,n+1),
+\]
+a lower bound for the Weyl expression is
+\begin{equation}\label{eq:box-weyl}
+ W_-:=\frac{333}{424}(1-q_+^2)e_-.
+\end{equation}
+A subtraction upper bound is
+\begin{equation}\label{eq:box-subtraction}
+ S_+:=C_n-C_{\lfloor q_-^2e_-\rfloor}.
+\end{equation}
+For a mixed upper bound $M_+$, count the modes in
+\eqref{eq:mixed-count} at the inclusive energy $e_+$,
+replacing $1/(1-q)^2$ by $1/(1-q_-)^2$ and $1/q^2$
+by $1/q_+^2$. Each replacement lowers the eigenvalue
+term separately. The two minima need not be attained at
+the same $q$; their sum is still a lower bound. These
+counts are conservative also at the excluded upper
+energy endpoint.
+
+Table~\ref{tab:middle-cover} specifies all 21 rectangles.
+Write $q_*=207/400$ and $q_{**}=427/800$ in this table only.
+``All'' means the full interval \eqref{eq:q-middle}; omitted
+energy restrictions mean $[n,n+1)$. Each row satisfies
+$U\le W_-$ by rational arithmetic, with $U$ the stated
+upper count from $S_+$ or $M_+$. The full endpoints and the
+mode-count formulas are sufficient to reproduce the table
+without approximating $\pi$ or a frame eigenvalue.
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{rllcr}
+\toprule
+$n$ & Ratio range & Additional energy range & Bound & $U$\\
+\midrule
+2 & All & & $S_+$ & 1\\
+5 & All & & $M_+$ & 2\\
+6 & All & & $S_+$ & 3\\
+10 & All & & $S_+$ & 5\\
+13 & All & & $S_+$ & 7\\
+26 & All & & $S_+$ & 14\\
+29 & $q\le q_*$ & & $S_+$ & 16\\
+29 & $q\ge q_*$ & & $M_+$ & 14\\
+41 & All & & $M_+$ & 22\\
+53 & $q\le q_*$ & & $M_+$ & 30\\
+53 & $q\ge q_*$ & & $S_+$ & 29\\
+74 & $q\le q_*$ & & $S_+$ & 42\\
+74 & $q\ge q_*$ & $e<149/2$ & $M_+$ & 40\\
+74 & $q_*\le q\le q_{**}$ & $e\ge149/2$ & $S_+$ & 41\\
+74 & $q\ge q_{**}$ & $e\ge149/2$ & $S_+$ & 39\\
+85 & $q\le q_*$ & & $M_+$ & 48\\
+85 & $q\ge q_*$ & & $M_+$ & 46\\
+90 & $q\le q_*$ & & $S_+$ & 51\\
+90 & $q\ge q_*$ & & $M_+$ & 48\\
+130 & $q\le q_*$ & & $M_+$ & 74\\
+130 & $q\ge q_*$ & & $M_+$ & 70\\
+\bottomrule
+\end{tabular}
+\caption{A rational cover of the thirteen remaining middle-ratio
+energy bands. Every ratio range is intersected with
+$[97/200,11/20]$ and every energy range with $[n,n+1)$.}
+\label{tab:middle-cover}
+\end{table}
+
+The intervals in $q$ are closed, so shared edges are covered.
+The energy bands are half-open: their upper endpoints belong
+to the next integer band. At $e=149/2$ the upper subrectangles
+include their lower endpoint. Thus the table has no uncovered
+boundary cases. The exact certificate also verifies its union
+by partitioning along every listed edge.
+
+Equations \eqref{eq:middle-tail}--\eqref{eq:exception-list},
+the actual gap \eqref{eq:actual-gap}, and the table now give
+\begin{equation}\label{eq:middle-conclusion}
+ N_{\Om_q}(E)\le\frac{1-q^2}{4\pi}E
+ \quad\left(\frac{97}{200}\le q\le\frac{11}{20},\ E\ge0\right).
+\end{equation}
+Since $97/200<\sstar$, the small-hole range, this middle
+range, and \eqref{eq:thin-conclusion} cover every $0<q<1$.
+Evaluating the inclusive counting bound at each eigenvalue
+proves \eqref{eq:main-frame}.
+
+\section{Large parallel rectangular holes with arbitrary displacement}\label{sec:displaced}
+
+The last geometric conclusion allows the two sides of the hole to vary
+independently. Let the outer square have side one and let the strictly
+interior parallel rectangle have side lengths $p,q\in[11/12,1)$.
+Its position is arbitrary. We prove
+\[
+ N_\Om(E)\le\frac{1-pq}{4\pi}E\qquad(E\ge0).
+\]
+Scaling and evaluation at each eigenvalue then give
+\eqref{eq:main-displaced}. This argument does not use the
+disk-discrepancy estimate.
+
+Rotate the whole configuration by a quarter turn, if necessary, so
+that $p\le q$, with $p$ horizontal. Put
+\[
+ \delta=1-q,\qquad c=\frac{1-p}{1-q}\ge1,
+ \qquad x=\delta\frac{\sqrt E}{\pi},\qquad z=cx.
+\]
+The two horizontal gaps have lengths $\delta a$ and
+$\delta(1-a)$, and the side gaps have lengths $c\delta b$ and
+$c\delta(1-b)$, for independent $a,b\in(0,1)$. For $h>0$, define
+\begin{equation}\label{eq:rect-width-sums}
+ A_h(x)=\sum_{\substack{j\ge0\\j+1/2\le hx}}
+       \sqrt{x^2-\frac{(j+1/2)^2}{h^2}},\qquad
+ R_h(x)=\sum_{\substack{j\ge1\\j\le hx}}
+       \sqrt{x^2-\frac{j^2}{h^2}},\qquad R=R_1.
+\end{equation}
+Set $A_0=R_0=0$. Threshold terms have value zero. Here $R$
+is the integer-point sum from \eqref{eq:AB}; the width-indexed
+midpoint sums $A_h$ are distinct from the odd-indexed $A$
+used there.
+
+Cut the frame into its two full-width horizontal rectangles and
+two middle side rectangles. Relax matching at the cuts and the
+entire inward horizontal edge of each horizontal rectangle to
+Neumann. Its other three edges remain Dirichlet. The side
+rectangles are Dirichlet across their widths and Neumann at both
+ends of their length $q$. This enlarges the original Dirichlet
+form domain, with norm and energy unchanged on restrictions.
+
+The horizontal transverse frequencies are
+$(j+1/2)/(\delta a)$ and $(j+1/2)/(\delta(1-a))$; summing
+their longitudinal Dirichlet counts and bounding floors gives
+$\delta^{-1}(A_a+A_{1-a})$. Each side transverse frequency
+contributes one plus a floor, with the one counting the
+longitudinal Neumann zero mode even at equality.
+For every $s\ge0$,
+\[
+ \lfloor bs\rfloor+\lfloor(1-b)s\rfloor\le\lfloor s\rfloor.
+\]
+Integration against $s/\sqrt{x^2-s^2}$ gives
+$R_b(x)+R_{1-b}(x)\le R(x)$, because a frequency $\nu\le x$
+contributes $\sqrt{x^2-\nu^2}$. Applying this comparison to
+total side width $c$, and retaining the zero modes, yields
+\begin{equation}\label{eq:rect-mixed}
+ \delta N_\Om(E)\le
+ A_a(x)+A_{1-a}(x)+\frac q cR(cx)+\delta\lfloor cx\rfloor.
+\end{equation}
+Here $R_c(x)=R(cx)/c$. Since $1-pq=\delta(1+qc)$, the
+desired Weyl expression, multiplied by $\delta$, is
+$\pi(1+qc)x^2/4$.
+
+\subsection*{An extremal reduction of the side lengths}
+
+For fixed $c,x,a$, let
+\begin{equation}\label{eq:rect-D}
+ D=A_a(x)+A_{1-a}(x)+\frac{1-\delta}{c}R(cx)
+       +\delta\lfloor cx\rfloor
+       -\frac\pi4\bigl(1+(1-\delta)c\bigr)x^2.
+\end{equation}
+The decreasing right-endpoint sum satisfies $R(u)\le\pi u^2/4$.
+Consequently
+\[
+ \frac{\partial D}{\partial\delta}
+ =\lfloor cx\rfloor+\frac1c\left(\frac\pi4(cx)^2-R(cx)\right)
+ \ge0.
+\]
+The condition $p\ge11/12$ gives $\delta\le1/(12c)$.
+It therefore suffices to take
+\begin{equation}\label{eq:rect-worst}
+ \delta=\frac1{12c},\qquad p=\frac{11}{12},
+ \qquad q=1-\frac1{12c}.
+\end{equation}
+This is a scalar comparison at fixed $x$; no geometric inclusion
+is asserted.
+
+For $x>0$ and $z=cx\ge x$, put
+\begin{align}
+ d_R(z)&=\frac\pi4z^2-R(z),\notag\\
+ \mathcal H(x,a)&=\frac{A_a(x)+A_{1-a}(x)}x-\frac\pi4x,
+       \label{eq:rect-HKL}\\
+ \mathcal K(z,x)&=\left(1-\frac{x}{12z}\right)\frac{d_R(z)}z
+                     -\frac{\lfloor z\rfloor}{12z},\notag\\
+ \mathcal L(z)&=\frac{11}{12}\frac{d_R(z)}z
+                     -\frac{\lfloor z\rfloor}{12z}.\notag
+\end{align}
+In \eqref{eq:rect-worst}, $D/x=\mathcal H-\mathcal K$.
+Moreover $d_R\ge0$ and $x\le z$ give
+\begin{equation}\label{eq:rect-KL}
+ \mathcal K(z,x)\ge\mathcal L(z).
+\end{equation}
+
+\subsection*{Scalar estimates with explicit tails}
+
+We use the uniform midpoint estimate
+\begin{equation}\label{eq:rect-midpoint}
+ A_1(y)\le\frac\pi4y^2+\frac4{25}y\qquad(y\ge0).
+\end{equation}
+To obtain its tail, take $f(s)=\sqrt{y^2-s^2}$, let $w$ be
+the largest half-integer not exceeding $y$, and set $r=y-w$.
+The trapezoid inequality for the concave function $f$ on
+$[1/2,w]$, the decreasing initial half-interval, and the final
+chord give
+\[
+ A_1(y)-\frac\pi4y^2
+ \le\frac{1-r}{2}f(w)
+ \le\frac{\sqrt{2y}}2(1-r)\sqrt r
+ \le\sqrt{\frac2{27}}\sqrt y.
+\]
+The formula remains valid with one summand and at a frequency
+threshold. Since $(2/27)/3\le(4/25)^2$, it proves
+\eqref{eq:rect-midpoint} for $y\ge3$. Below $1/2$ the sum
+vanishes. Appendix~\ref{app:displaced-certificate} certifies the
+remaining interval $[1/2,3]$ by 123 rational intervals.
+The scaling identity $A_h(x)=A_1(hx)/h$ now gives
+\begin{equation}\label{eq:rect-H-global}
+ \mathcal H(x,a)\le\frac8{25}\qquad(x>0,\ 0\le a\le1).
+\end{equation}
+
+The integer-point version of the same trapezoid argument is
+\eqref{eq:R-upper}; its initial endpoint contributes $-y/2$.
+Using that estimate and $\lfloor z\rfloor\le z$ gives
+\begin{equation}\label{eq:rect-L-tail}
+ \mathcal L(z)\ge\frac38-\frac{11}{12}\sqrt{\frac2{27}}z^{-1/2}
+ \qquad(z\ge1).
+\end{equation}
+The finite certificates in Appendix~\ref{app:displaced-certificate}
+and this tail prove
+\begin{equation}\label{eq:rect-L-bounds}
+ \mathcal L(z)\ge\frac7{25}\quad(z\ge1),\qquad
+ \mathcal L(z)\ge\frac8{25}\quad(z\ge4).
+\end{equation}
+Their finite ranges are $[1,7)$ and $[4,21)$, respectively.
+For the two tails, the exact positive differences are
+\[
+ 7\left(\frac38-\frac7{25}\right)^2
+ -\left(\frac{11}{12}\right)^2\frac2{27}
+ =\frac{9061}{9720000},
+\]
+and
+\[
+ 21\left(\frac38-\frac8{25}\right)^2
+ -\left(\frac{11}{12}\right)^2\frac2{27}
+ =\frac{12463}{9720000}.
+\]
+A further compact certificate gives
+\begin{equation}\label{eq:rect-H-middle}
+ \mathcal H(x,a)\le\frac4{15}
+ \qquad(2\le x\le4,\ 0\le a\le1).
+\end{equation}
+
+\subsection*{Concavity removes displacement at low energies}
+
+For $1\le x\le2$ there is a more precise structural bound:
+\begin{equation}\label{eq:rect-low-structure}
+ A_a(x)+A_{1-a}(x)
+ \le\max\{A_1(x),\,2\sqrt{x^2-1}\}.
+\end{equation}
+If only one width contributes, monotonicity in width bounds its
+sum by $A_1(x)$. If both contribute nonzero terms, a second
+frequency in either width would require total scaled width
+strictly greater than $1/2+3/2=2$. Hence each width contributes
+only its first nonzero term. The function
+$h\mapsto\sqrt{x^2-1/(4h^2)}$ is concave on its active
+interval. The symmetric sum is therefore maximized at
+$a=1/2$, giving the second term in
+\eqref{eq:rect-low-structure}. Additional terms at $x=2$ have
+value zero, so the endpoint is included.
+
+Write
+\[
+ h_0(x)=2\sqrt{1-x^{-2}}-\frac\pi4x\qquad(1\le x\le2).
+\]
+Then \eqref{eq:rect-midpoint} and
+\eqref{eq:rect-low-structure} imply
+$\mathcal H\le\max\{4/25,h_0\}$. The last finite
+certificate is the explicit comparison
+\begin{equation}\label{eq:rect-center-comparison}
+ h_0(x)\le\mathcal K(z,x)
+ \qquad(1\le x\le2,\ x\le z<4).
+\end{equation}
+Only the two spectral scales remain; no displacement variable
+occurs in this certificate.
+
+\subsection*{Completion of the geometric proof}
+
+If $z\ge4$, equations \eqref{eq:rect-H-global},
+\eqref{eq:rect-L-bounds} and \eqref{eq:rect-KL} give
+$\mathcal H\le\mathcal K$. Suppose $z<4$, so $x\le z<4$.
+For $2\le x<4$, use $\mathcal H\le4/15<7/25\le
+\mathcal L\le\mathcal K$. For $1\le x\le2$,
+\eqref{eq:rect-center-comparison} treats the $h_0$ branch,
+while $4/25<7/25\le\mathcal K$ treats the other branch.
+
+If $0<x<1$, both horizontal widths cannot contribute nonzero
+terms, so $A_a+A_{1-a}\le A_1(x)$ and
+$\mathcal H\le4/25$. When $z\ge1$, the lower bound
+$\mathcal K\ge7/25$ finishes the comparison. If $z<1$,
+both $R(z)$ and $\lfloor z\rfloor$ vanish, giving
+\[
+ \mathcal K(z,x)=\frac\pi4z-\frac\pi{48}x
+ \ge\frac{11\pi}{48}x.
+\]
+For $x<1/2$ one has $\mathcal H=-\pi x/4<0$; for
+$1/2\le x<1$ one has $\mathcal K\ge11\pi/96>4/25$.
+The case $x=0$ is the zero-energy count and requires no division.
+The stated closed ranges cover $x=1/2,1,2,4$ and $z=1,4$;
+the other integer $z$ boundaries are covered in the finite
+certificate by the interval beginning there.
+
+Thus $D\le0$ at every energy and for every allowed position
+and pair of side lengths. Equation~\eqref{eq:rect-mixed}
+proves the required inclusive count inequality and hence
+\eqref{eq:main-displaced}. The conclusion does not concern
+all intermediate side lengths,
+large rotated holes, or an arbitrary outer rectangle.
+
+\appendix
+\section{An explicit disk-discrepancy estimate}\label{app:circle}
+
+We supply the analytic input to \eqref{eq:deficit-tail}, including
+its constant and onset. The bound is deliberately elementary;
+no improvement in the Gauss-circle discrepancy exponent is claimed.
+With the inclusive count $G$ from \eqref{eq:reflection}, we need
+\begin{equation}\label{eq:gauss}
+ \abs{G(r)-\pi r^2}\le11r^{2/3}\qquad(r\ge2).
+\end{equation}
+
+\subsection*{The Bessel bound}
+
+The classical integral representation and large-argument
+asymptotics for $J_1$ will be used in their usual real
+normalization \cite[\S\S10.9, 10.17]{DLMF}. They imply
+\begin{equation}\label{eq:J1-bound}
+ \abs{J_1(x)}\le\min\{x/2,x^{-1/2}\}\qquad(x>0),
+\end{equation}
+as follows. Poisson's representation is
+\[
+ J_1(x)=\frac{x}{\pi}\int_{-1}^{1}e^{ixt}\sqrt{1-t^2}\dd t,
+\]
+which gives the bound $x/2$. It also gives the second bound
+for $0<x\le1$. For $1\le x\le2$, the alternating power
+series has decreasing terms. Its lower two-term truncation
+is nonnegative, and its upper three-term truncation gives
+\[
+ 0\le J_1(x)\le\frac x2-\frac{x^3}{16}+\frac{x^5}{384}
+ \le\frac x2-\frac{5x^3}{96}
+ \le\frac4{3\sqrt5}<\frac35.
+\]
+Since $(3/5)\sqrt2<1$, this proves the remaining bound on
+that interval.
+
+For $x\ge2$, put $u(x)=\sqrt x\,J_1(x)$ and
+$b(x)=1-3/(4x^2)$. The Bessel equation reads $u''+bu=0$.
+Consequently
+\[
+ \mathcal E(x)=u'(x)^2+b(x)u(x)^2,
+ \qquad\mathcal E'(x)=b'(x)u(x)^2\ge0.
+\]
+The standard function and derivative asymptotics give
+$\lim_{x\to\infty}\mathcal E(x)=2/\pi$. Therefore
+$b(x)u(x)^2\le2/\pi$. Since $b(x)\ge13/16$,
+\[
+ \abs{J_1(x)}^2\le\frac{32}{13\pi x}<\frac1x,
+\]
+completing \eqref{eq:J1-bound}.
+
+\subsection*{Smoothing a disk without losing its boundary points}
+
+Use the Fourier transform
+$\widehat f(\xi)=\int_{\R^2}f(x)e^{-2\pi i x\cdot\xi}\dd x$.
+For the indicator $\chi_R$ of a disk of radius $R$,
+\[
+ \widehat\chi_R(\xi)=\frac{R}{\abs\xi}J_1(2\pi R\abs\xi)
+ \qquad(\xi\ne0).
+\]
+Let $\mu_\varepsilon=\chi_\varepsilon/(\pi\varepsilon^2)$,
+where $0<\varepsilon<r$. The pointwise convolution comparisons
+give
+\begin{equation}\label{eq:disk-sandwich}
+ \sum_{m\in\Z^2}(\chi_{r-\varepsilon}*\mu_\varepsilon)(m)
+ \le G(r)\le
+ \sum_{m\in\Z^2}(\chi_{r+\varepsilon}*\mu_\varepsilon)(m).
+\end{equation}
+The lower convolution is zero at an exterior tangent point;
+the upper convolution equals one throughout the closed
+radius-$r$ disk. Hence the inclusive convention in $G$
+introduces no boundary error.
+
+Write $c=1/(\pi\sqrt{2\pi})$. From \eqref{eq:J1-bound},
+\[
+ \abs{\widehat\chi_R(m)}\le\sqrt{\frac{R}{2\pi}}\abs m^{-3/2},
+ \qquad
+ \abs{\widehat\mu_\varepsilon(m)}
+ \le\min\{1,c(\varepsilon\abs m)^{-3/2}\}.
+\]
+There are exactly $8k$ points of $\Z^2$ with supremum norm
+$k$, and their Euclidean norm is at least $k$. Put
+$K=c^{2/3}/\varepsilon=1/(2^{1/3}\pi\varepsilon)$.
+The relevant summand is decreasing, so
+\begin{align}
+ &\sum_{m\ne0}\abs m^{-3/2}
+             \min\{1,c(\varepsilon\abs m)^{-3/2}\}\notag\\
+ &\quad\le8\sum_{k\ge1}k^{-1/2}\min\{1,(K/k)^{3/2}\}
+ \le8\int_0^\infty y^{-1/2}\min\{1,(K/y)^{3/2}\}\dd y
+ =24\sqrt K.\label{eq:lattice-shell}
+\end{align}
+The Fourier series of the periodized convolution is
+absolutely convergent: the product decay is $O(\abs m^{-3})$.
+The convolution is continuous and compactly supported.
+Periodization and uniqueness of its absolutely convergent
+Fourier series therefore justify Poisson summation here.
+Its nonzero frequencies have total absolute value at most
+\[
+ \frac{24}{2^{2/3}\pi}\sqrt{R/\varepsilon}.
+\]
+Combining both sides of \eqref{eq:disk-sandwich}, and using
+$R=r+\varepsilon$ for a common bound, yields
+\begin{equation}\label{eq:disk-error}
+ \abs{G(r)-\pi r^2}\le
+ 2\pi r\varepsilon+\pi\varepsilon^2
+ +\frac{24}{2^{2/3}\pi}\sqrt{(r+\varepsilon)/\varepsilon}.
+\end{equation}
+
+Choose $\varepsilon=\tfrac12r^{-1/3}$. After division by
+$r^{2/3}$, the right side is
+\[
+ \pi+\frac\pi4r^{-4/3}
+ +\frac{24}{2^{2/3}\pi}\sqrt{2+r^{-4/3}}.
+\]
+For $r\ge2$, use $r^{-4/3}<2/5$, $\pi<22/7$,
+$\pi>157/50$, $2^{2/3}>19/12$, and
+$\sqrt{12/5}<31/20$. The expression is less than
+\begin{equation}\label{eq:gauss-constant}
+ \frac{121}{35}+\frac{22320}{2983}
+ =\frac{1142143}{104405}<11.
+\end{equation}
+All radical comparisons follow by taking the appropriate
+positive powers. This proves \eqref{eq:gauss} with the
+explicit onset $r=2$.
+
+Finally \eqref{eq:reflection} gives
+\[
+ d(u)=\lfloor u\rfloor+\frac14
+             -\frac{G(u)-\pi u^2}{4}.
+\]
+The inequalities $u-1\le\lfloor u\rfloor\le u$ now give
+\eqref{eq:deficit-tail}, including its different constants
+$-3/4$ and $+1/4$.
+
+\section{Exact arithmetic and complete finite coverage}\label{app:certificate}
+
+This appendix specifies the finite obligations in the proof.
+They are verified by the accompanying Python program
+\texttt{verify\_polya.py}. Its output records
+the tested ranges, exception lists, and interval-cover counts.
+The mathematical reductions in the paper are essential:
+finite enumeration alone would not prove an all-energy or
+all-parameter assertion.
+
+\subsection*{Rational constants and lattice multiplicity}
+
+All decisions use integers or rational numbers. In particular,
+\begin{equation}\label{eq:pi-bracket}
+ \frac{333}{106}<\pi<\frac{355}{113}
+\end{equation}
+is certified by the Machin identity
+$\pi=16\arctan(1/5)-4\arctan(1/239)$ and alternating
+series enclosures for
+\[
+ \arctan(1/a)=\sum_{j\ge0}\frac{(-1)^j}{(2j+1)a^{2j+1}}.
+\]
+An even number of terms gives a lower bound, and adding
+the next positive term gives an upper bound. Twelve terms
+for $a=5$ and four for $a=239$ suffice. Thus no binary
+floating-point value of $\pi$ enters a proof decision.
+For completeness, the tangent addition formula gives
+$\tan\theta=1$ for
+$\theta=4\arctan(1/5)-\arctan(1/239)$. The same rational
+series enclosures give $0<\theta<1<\pi/2$, fixing the
+branch $\theta=\pi/4$ in the Machin identity.
+
+For an integer cutoff $M$, form the array
+\begin{equation}\label{eq:count-array}
+ r_n=\#\{(a,b)\in\N^2:a^2+b^2=n\},\qquad
+ C_n=\sum_{j=0}^n r_j\quad(0\le n\le M).
+\end{equation}
+One can enumerate ordered pairs using integer square roots,
+or unordered pairs with weight two off the diagonal and
+weight one on it. Both count eigenvalue multiplicity.
+For an independent direct check,
+\begin{equation}\label{eq:count-row}
+ C_n=\sum_{a=1}^{\lfloor\sqrt n\rfloor}
+                         \left\lfloor\sqrt{n-a^2}\right\rfloor.
+\end{equation}
+Every square-root floor in these formulas is an integer
+square root. The final cutoff is $M=4{,}000{,}000$, and
+$C_M=3{,}139{,}586$. Array entries stay below $2^{32}$;
+the inequality tests use unbounded Python integers.
+
+\subsection*{Upper and lower deficit tests are different}
+
+An upper bound on $d(u)/u$ must be checked at the
+\emph{left limits} of its downward jumps. Set
+$A_n=355n-452C_{n-1}$. Using \eqref{eq:pi-bracket}, the
+finite upper tests are
+\begin{align}
+ 9A_n^2&\le1808^2 n,
+ &&1\le n\le4{,}000{,}000,\quad A_n>0,
+ \label{eq:cert-upper}\\
+ (1000A_n)^2&\le(1309\cdot452)^2n,
+ &&1\le n\le18,\quad A_n>0.
+ \label{eq:cert-prefix}
+\end{align}
+When $A_n\le0$ the corresponding unsquared upper bound
+holds immediately. Since $d(u)/u$ increases between
+successive jumps, these tests give the finite part of
+\eqref{eq:deficit-upper}. The tail follows from
+\eqref{eq:thousand}; there is harmless overlap.
+
+In contrast, lower bounds are tested at the inclusive
+values $C_n$. Besides \eqref{eq:low-tests} and
+\eqref{eq:low-linear-test}, the small-hole comparison uses
+\begin{align}
+ L_n&\ge0,\quad
+ (500000L_n)^2\ge(318087\cdot424)^2n,
+ &&21\le n\le76,\ n\ne53,
+ \label{eq:cert-hole-middle}\\
+ L_n&\ge0,\quad
+ (125L_n)^2\ge(81\cdot424)^2n,
+ &&76\le n\le1{,}000{,}000.
+ \label{eq:cert-hole-high}
+\end{align}
+Including $n=53$ in the first test yields exactly that
+one failure. It is discharged analytically by
+\eqref{eq:partition}--\eqref{eq:53-close}; it is not
+discarded as numerical noise. The middle-frame test is
+\eqref{eq:middle-test}; its complete exception list is
+\eqref{eq:exception-list}.
+
+All these checks cover real intervals because the count
+is constant on $n\le t^2<n+1$ and the relevant differences
+or ratios increase there. The analytic estimates
+\eqref{eq:thousand} and \eqref{eq:middle-tail} cover the
+remaining unbounded ranges. The rational comparisons
+placing $\sstar$ and its transitions, all five quantities
+in \eqref{eq:partition-endpoints}, and the map constant
+in \eqref{eq:transfer} are checked separately.
+
+\subsection*{Verifying the middle-ratio cover}
+
+For each row of Table~\ref{tab:middle-cover}, use
+\eqref{eq:box-weyl} and \eqref{eq:box-subtraction}, or
+enumerate the lowered mixed modes specified after those
+formulas. The loops are finite: on the stated ratio
+range every coefficient of $a^2$ and $b^2$ in the lowered
+mixed spectra is at least one, so no mode with an index
+larger than $\lfloor\sqrt{\lceil e_+\rceil}\rfloor$ can
+contribute. Counting at $e_+$ is conservative for the
+half-open interval below it.
+
+The 21 upper counts in the table are reproduced exactly,
+and the least difference $W_--U$ is $107/3200>0$.
+To check coverage independently of their construction,
+partition the ratio and energy axes at every listed
+endpoint. Rectangle membership is constant on each open
+cell. Test those cells and their included boundary
+strata; 120 resulting checks verify the full union.
+This is a finite exact test of an axis-aligned cover,
+not a numerical sample of the spectral problem.
+
+\subsection*{The thin-frame square-root certificate}
+
+For $1\le j\le399$, work on $j\le x<j+1$, where
+$n(x)=\lfloor j/2\rfloor$ and the possible nonzero
+summands in \eqref{eq:AB} have $1\le k\le j$.
+Set $G_0=4096$ and $H_0=2^{20}$, and use the variable
+$v=x^2$. Start with the integer-ended interval
+\[
+ [L,U)=[j^2G_0,(j+1)^2G_0)
+\]
+for $G_0v$. For each $1\le k\le j$ set
+\begin{equation}\label{eq:root-upper}
+ u_k=\left\lfloor\sqrt{(U-k^2G_0)2^{28}}\right\rfloor+1.
+\end{equation}
+Since $H_0^2/G_0=2^{28}$, throughout the box
+$\sqrt{v-k^2}\le u_k/H_0$. The added one is safe even
+for a perfect-square radicand. Let $O$ and $V$ be the
+sums of $u_k$ over odd and even $k$, respectively.
+The integer inequality
+\begin{equation}\label{eq:thin-integer}
+ 103230LH_0\ge
+ 8480G_0\bigl(20O+11V+9\lfloor j/2\rfloor H_0\bigr)
+\end{equation}
+implies $D_{11/20}(x)\le0$ throughout the box. Indeed,
+the right side before clearing denominators bounds
+$2A+(11/10)B+(9/10)n$, while the Weyl side is at least
+$(10323/8480)L/G_0$ by \eqref{eq:pi-bracket}.
+
+If \eqref{eq:thin-integer} fails, bisect the integer
+interval at $\lfloor(L+U)/2\rfloor$ and test both
+children. A failing unit-width interval would be a
+certificate failure. None occurs. The result is
+25,837 tested boxes, 13,118 accepted covering boxes,
+and maximal subdivision depth seven. The least integer
+margin in \eqref{eq:thin-integer} is
+$169{,}637{,}314{,}560$.
+
+Each original interval is half-open in $x$ at $j+1$.
+If $j+1$ is even, the new Neumann zero mode is counted
+in the next interval, which includes its left endpoint.
+The final endpoint $x=400$ belongs to the analytic
+tail \eqref{eq:thin-tail}. Internal bisection endpoints
+are covered. Thus the finite computation proves the
+inequality at every real $1\le x<400$.
+
+\section{Exact certificates for the rectangular-hole comparison}\label{app:displaced-certificate}
+
+The second accompanying program, \texttt{verify\_rectangular.py},
+verifies the five finite statements in Section~\ref{sec:displaced}.
+It is independent of the first program and uses only integer and
+rational arithmetic. Twelve-term alternating arctangent enclosures
+in the Machin identity recheck
+$333/106<\pi<355/113$.
+
+Put $P=333/106$ and $B_0=2^{24}$. For a nonnegative rational
+number $r=u/v$, define
+\begin{equation}\label{eq:rect-root-enclosure}
+ U(r)=\operatorname{isqrt}\left(\left\lfloor
+                  \frac{uB_0^2}{v}\right\rfloor\right)+1,
+ \qquad T(r)=U(r)-1.
+\end{equation}
+Then $T(r)/B_0\le\sqrt r<U(r)/B_0$, also when $r=0$
+or the radical is a perfect square. In the following acceptance
+tests, every upper sum uses these enclosures after monotonicity
+has moved its energy and width arguments to the indicated
+endpoints. All failed comparisons cause subdivision; exhaustion
+of a stated grid or depth is a fatal verification failure.
+
+\subsection*{The midpoint bound and the lower envelopes}
+
+For \eqref{eq:rect-midpoint}, use squared energy $r=y^2$ and
+begin with $[1/4,9]$. A rational interval $[l,u]$ is accepted if
+\begin{equation}\label{eq:rect-midpoint-box}
+ \frac P4l+\frac4{25}\frac{T(l)}{B_0}
+ \ge\operatorname{upper}A_1(\sqrt u).
+\end{equation}
+Otherwise bisect it. The 123 accepted intervals have total
+width $35/4$, giving the full closed finite range
+$1/2\le y\le3$.
+
+For a lower bound $\mathcal L\ge\gamma$, divide the $z$
+axis into half-open integer bands $n\le z<n+1$. On a
+subinterval $[l,u)$ accept if
+\begin{equation}\label{eq:rect-L-box}
+ \frac{11P}{4}l^2
+ \ge11\operatorname{upper}R(u)+n+12\gamma u.
+\end{equation}
+This is obtained by multiplying the desired inequality by
+$12z$. Take $\gamma=7/25$ and $n=1,\ldots,6$, or
+$\gamma=8/25$ and $n=4,\ldots,20$. Rational bisection
+produces accepted widths summing to six and seventeen,
+respectively. Their final endpoints are covered by
+\eqref{eq:rect-L-tail}. At an integer boundary, the next
+band uses the new floor value.
+
+\subsection*{The remaining horizontal range}
+
+For \eqref{eq:rect-H-middle}, let $r=x^2$ and use grid
+denominators $G_0=K_0=2^{14}$ for $r$ and $a$. The initial
+rectangle is $[4,16]\times[0,1/2]$; symmetry gives the
+remaining displacement range. A box $[l,u]\times[a,b]$ is
+accepted if
+\begin{equation}\label{eq:rect-H-box}
+ \frac P4l+\frac4{15}\frac{T(l)}{B_0}
+ \ge\operatorname{upper}
+       \{A_b(\sqrt u)+A_{1-a}(\sqrt u)\}.
+\end{equation}
+Both width sums increase in their width and squared energy,
+so the separate endpoint maxima give a safe upper bound even
+when they do not occur at a common displacement.
+
+In integer coordinates $(r_l,r_u,a_l,a_u)$ the energy
+coordinate is bisected when
+$(r_u-r_l)K_0\ge2(a_u-a_l)r_u$, unless only the other
+coordinate remains available. The accepted grid areas sum
+exactly to $12G_0(K_0/2)=1610612736$.
+
+\subsection*{The explicit two-scale comparison}
+
+For $n=\lfloor z\rfloor$, subtraction gives
+\begin{equation}\label{eq:rect-center-expanded}
+ \mathcal K(z,x)-h_0(x)
+ =\frac\pi4z+\frac{11\pi}{48}x
+ -\left(1-\frac{x}{12z}\right)\frac{R(z)}z
+ -\frac n{12z}-2\sqrt{1-x^{-2}}.
+\end{equation}
+The quotient $R(z)/z$ is a sum of terms
+$\sqrt{1-j^2/z^2}$, each increasing in $z$ after activation.
+The factor $1-x/(12z)$ increases in $z$ and decreases in $x$.
+Therefore, on $[a,b]\times[c,d)$ within one fixed floor
+band, it suffices to check
+\begin{equation}\label{eq:rect-center-box}
+ P\left(\frac c4+\frac{11a}{48}\right)
+ \ge\left(1-\frac a{12d}\right)
+       \operatorname{upper}\frac{R(d)}d
+       +\frac n{12c}
+       +2\frac{U(1-b^{-2})}{B_0}.
+\end{equation}
+Here the normalized Riesz sum is enclosed directly by summing
+$U(1-j^2/d^2)/B_0$.
+
+Use denominator $G_2=2^{16}$ for both coordinates and initial
+rectangles $[1,2]\times[n,n+1)$, $n=1,2,3$. Intersect
+each box with $z\ge x$. A box with zero intersection area is
+discarded; all others are accepted by
+\eqref{eq:rect-center-box} or subdivided along a longest
+available coordinate, choosing $x$ at a tie.
+The acceptance inequality proves the continuous frozen-$n$
+expression on the full closed box and hence on its clipped
+part within the half-open floor band. It does not substitute
+the old floor value at the next integer.
+
+For a grid rectangle $[x_l,x_u]\times[z_l,z_u]$, twice its
+clipped grid area is computed exactly as
+\[
+ 2(z_u-z_l)\max\{0,\min(x_u,z_l)-x_l\}
+ +(v-u)(2z_u-v-u)
+\]
+when $v>u$, with the last term omitted otherwise, where
+$u=\max(x_l,z_l)$ and $v=\min(x_u,z_u)$.
+The sums of accepted doubled areas on the three bands are
+$G_2^2,2G_2^2,2G_2^2$, exactly the corresponding initial
+clipped areas.
+
+Within each fixed floor band, diagonal points $z=x$ are
+limits of the positive-area region above the diagonal.
+The finite collection of accepted closed boxes therefore
+covers them by continuity of the frozen-$n$ expression.
+At $z=1,2,3$ the band beginning there supplies its actual
+floor value; $z=4$ belongs to \eqref{eq:rect-L-bounds}.
+Shared subdivision edges are included. Thus the area checks
+are supplemented by a boundary argument and are not being
+used alone to infer coverage of spectral jumps.
+
+\subsection*{Replay totals}
+
+The deterministic results are as follows.
+\begin{center}
+\small
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Finite comparison & Tested & Accepted & Depth\\
+\midrule
+Midpoint, $1/2\le y\le3$ & 245 & 123 & 12\\
+$\mathcal L\ge7/25$, $1\le z<7$ & 434 & 220 & 9\\
+$\mathcal L\ge8/25$, $4\le z<21$ & 1995 & 1006 & 10\\
+$\mathcal H\le4/15$, $2\le x\le4$ & 5395 & 2698 & 18\\
+Center comparison, $1\le x\le2$, $x\le z<4$ & 9280 & 4620 & 18\\
+\bottomrule
+\end{tabular}
+\end{center}
+All 8667 accepted boxes have positive rational margins.
+The triangle routine additionally skips 43 empty boxes.
+The program checks these statistics and the interval-width
+and grid-area identities against their exact expected values.
+The least margins, in table order, are
+\[
+ \frac{501827}{4445962240},\quad
+ \frac{39188871}{22229811200},\quad
+ \frac{3232271}{4445962240},\quad
+ \frac{39331}{6668943360},\quad
+ \frac{440730641}{125696244449280}.
+\]
+These are enclosures on full intervals or boxes, not values
+sampled at selected parameters. All unbounded ranges were
+already reduced to the displayed finite regions by the
+analytic estimates in Section~\ref{sec:displaced}.
+
+Both accompanying programs print deterministic JSON and write
+files only when the optional \texttt{--output} argument is
+supplied. Verification uses unconditional checks rather than
+Python assertions that optimization flags can disable.
+Caches are bounded. The computations certify explicit scalar
+comparisons; no eigenvalue of a perforated domain is computed.
+
+\section*{Acknowledgments}
+The author is indebted to his family for their extraordinary patience and support. He is grateful to Dr. C. Oommen and Prof. B. N. Raghunandan of the Department of Aerospace Engineering, Indian Institute of Science, for their mentorship and for fostering the intellectual latitude that enabled this independent research.
+
+\section*{Note on AI Use}
+The author declares the use of consumer-grade Gemini-3 and GPT-6 models for prior-art search, exploring and developing ideas and proofs, drafting and LaTeX typesetting; the author takes full and sole responsibility for all contents of this work.
+
+\begin{thebibliography}{99}
+\bibitem{Polya1961}
+G. P\'olya,
+On the eigenvalues of vibrating membranes,
+\emph{Proc. London Math. Soc.} (3) \textbf{11} (1961), 419--433.
+\href{https://doi.org/10.1112/plms/s3-11.1.419}{doi:10.1112/plms/s3-11.1.419}.
+
+\bibitem{Berezin1972}
+F. A. Berezin,
+Covariant and contravariant symbols of operators,
+\emph{Math. USSR-Izv.} \textbf{6} (1972), no.~5, 1117--1151.
+\href{https://doi.org/10.1070/IM1972v006n05ABEH001913}{doi:10.1070/IM1972v006n05ABEH001913}.
+
+\bibitem{LiYau1983}
+P. Li and S.-T. Yau,
+On the Schr\"odinger equation and the eigenvalue problem,
+\emph{Comm. Math. Phys.} \textbf{88} (1983), no.~3, 309--318.
+\href{https://doi.org/10.1007/BF01213210}{doi:10.1007/BF01213210}.
+
+\bibitem{Laptev1997}
+A. Laptev,
+Dirichlet and Neumann eigenvalue problems on domains in Euclidean spaces,
+\emph{J. Funct. Anal.} \textbf{151} (1997), no.~2, 531--545.
+\href{https://doi.org/10.1006/jfan.1997.3155}{doi:10.1006/jfan.1997.3155}.
+
+\bibitem{FLP2019}
+P. Freitas, J. Lagac\'e, and J. Payette,
+Optimal unions of scaled copies of domains and P\'olya's conjecture,
+\emph{Ark. Mat.} \textbf{59} (2021), no.~1, 11--51.
+\href{https://doi.org/10.4310/ARKIV.2021.v59.n1.a2}{doi:10.4310/ARKIV.2021.v59.n1.a2}.
+
+\bibitem{FS2023}
+P. Freitas and I. Salavessa,
+Families of non-tiling domains satisfying P\'olya's conjecture,
+\emph{J. Math. Phys.} \textbf{64} (2023), no.~12, 121503.
+\href{https://doi.org/10.1063/5.0161050}{doi:10.1063/5.0161050}.
+
+\bibitem{HW2025}
+X. He and Z. Wang,
+P\'olya's conjecture for thin products,
+\href{https://arxiv.org/abs/2402.12093v3}{arXiv:2402.12093v3} (2025).
+
+\bibitem{FLPS2023}
+N. Filonov, M. Levitin, I. Polterovich, and D. A. Sher,
+P\'olya's conjecture for Euclidean balls,
+\emph{Invent. Math.} \textbf{234} (2023), no.~1, 129--169.
+\href{https://doi.org/10.1007/s00222-023-01198-1}{doi:10.1007/s00222-023-01198-1}.
+
+\bibitem{FLPS2026}
+N. Filonov, M. Levitin, I. Polterovich, and D. A. Sher,
+P\'olya's conjecture for Dirichlet eigenvalues of annuli,
+\emph{J. London Math. Soc.} \textbf{113} (2026), no.~2, e70425.
+\href{https://doi.org/10.1112/jlms.70425}{doi:10.1112/jlms.70425}.
+
+\bibitem{JL2026}
+R. Jiang and F. Lin,
+P\'olya's conjecture up to $\epsilon$-loss and quantitative estimates
+for the remainder of Weyl's law,
+\emph{Comm. Pure Appl. Math.} (2026), e70058, early view.
+\href{https://doi.org/10.1002/cpa.70058}{doi:10.1002/cpa.70058};
+\href{https://arxiv.org/abs/2507.04307v4}{arXiv:2507.04307v4}.
+
+\bibitem{Weyl1912}
+H. Weyl,
+Das asymptotische Verteilungsgesetz der Eigenwerte linearer partieller
+Differentialgleichungen (mit einer Anwendung auf die Theorie der Hohlraumstrahlung),
+\emph{Math. Ann.} \textbf{71} (1912), no.~4, 441--479.
+\href{https://doi.org/10.1007/BF01456804}{doi:10.1007/BF01456804}.
+
+\bibitem{FrankLarson2025}
+R. L. Frank and S. Larson,
+Riesz means asymptotics for Dirichlet and Neumann Laplacians on Lipschitz domains,
+\emph{Invent. Math.} \textbf{241} (2025), 999--1079.
+\href{https://doi.org/10.1007/s00222-025-01352-x}{doi:10.1007/s00222-025-01352-x}.
+
+\bibitem{DLMF}
+NIST Digital Library of Mathematical Functions,
+release 1.2.8 of 2026-09-15,
+\url{https://dlmf.nist.gov/}.
+See \S\S10.9 and 10.17, in particular formulas 10.9.4, 10.17.3, and 10.17.9.
+\end{thebibliography}
+\end{document}
